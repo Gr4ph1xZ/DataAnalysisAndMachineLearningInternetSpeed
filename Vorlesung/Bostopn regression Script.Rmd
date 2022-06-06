@@ -1,0 +1,151 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+# Vorbereitungen
+
+Installieren der verwendeten Pakete und Bereinigung der aktuellen Arbeitsumgebung: 
+```{r, message=FALSE}
+if(!require("tidyverse")) {install.packages("tidyverse"); library("tidyverse")}
+if(!require("DescTools")) {install.packages("DescTools"); library("DescTools")}
+if(!require("sjlabelled")) {install.packages("sjlabelled"); library("sjlabelled")}
+if(!require("Hmisc")) {install.packages("Hmisc"); library("Hmisc")}
+if(!require("stats")) {install.packages("stats"); library("stats")}
+if(!require("MASS")) {install.packages("MASS"); library("MASS")}
+if(!require("psych")) {install.packages("psych"); library("psych")}
+if(!require("car")) {install.packages("car"); library("car")}
+if(!require("plotly")) {install.packages("plotly"); library("plotly")}
+
+
+rm(list = ls())
+```
+
+Erstellen der Testdaten:
+```{r}
+# Generate data
+mydata <- Boston
+                      
+
+# Display generated data for verification
+print(mydata)
+```
+
+
+```{r}
+round(cor(mydata),3)
+```
+
+
+```{r}
+plot(mydata$rm, 
+     mydata$medv, 
+     xlab = "rm", 
+     ylab = "Preis in 1000", 
+     cex.main = 1,
+     cex.lab = 1, 
+     cex.axis = 1)
+```
+
+```{r}
+summary(mydata)
+```
+```{r}
+sd(mydata$rm)
+sd(mydata$age)
+sd(mydata$medv)
+```
+
+```{r}
+reg <- lm(medv ~ rm, data = mydata) #regressant links, regressor rechts
+summary(reg)
+```
+```{r}
+plot(mydata$rm, 
+     mydata$medv, 
+     xlab = "Raumanzahl", 
+     ylab = "Preis", 
+     main = "Raumanzahl im Alter",
+     cex.main = 1,
+     cex.lab = 1, 
+     cex.axis = 1) + abline(reg); 
+```
+aöskdföasjfölasjfla
+
+```{r}
+plot(mydata$rm, 
+     mydata$medv, 
+     xlab = "Raumanzahl", 
+     ylab = "Preis", 
+     main = "Raumanzahl Preis",
+     cex.main = 1,
+     cex.lab = 1, 
+     cex.axis = 1,
+     ylim = c(0,50),
+     xlim = c(3,9)) + abline(reg); 
+```
+```{r}
+reg2 <- lm(medv ~ rm + lstat, data = mydata)
+summary(reg2)
+```
+
+```{r}
+medv <- mydata$medv
+rm <- mydata$rm
+lstat <- mydata$lstat
+
+grid <- expand.grid(medv, rm)
+d <- setNames(data.frame(grid), c("Preis", "Raumanzahl"))
+vals <- predict(reg2, newdata = d)
+
+RaumPreis <- matrix(vals, nrow = length(d$medv), ncol = length(d$rm))
+plane <- RaumPreis
+
+rm(d, grid, vals)
+
+library(plotly)
+p <- plot_ly(data = mydata, z = ~lstat, 
+x = ~rm, y = ~medv, opacity = 0.6) %>% add_markers()
+
+p %>% add_surface(z = ~plane, x = ~rm, y = ~medv, showscale = FALSE) %>% layout(showlegend = FALSE)
+```
+
+# ```{r}
+# reg3 <- lm(Absatz ~ Werbung + Preis + Verkauf, data = mydata)
+# summary(reg3)
+# ```
+# 
+# 
+# ```{r}
+# head(X2019)
+<!-- ``` -->
+
+
+
+<!-- ```{r} -->
+<!-- summary(X2019) -->
+<!-- ``` -->
+
+
+<!-- ```{r} -->
+<!-- names(X2019) <- c("Rank", "Region", "Score", "GDP", "Social", "Health", "Freedom", "Generosity", "Corruption") -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- cor(X2019[,3:9]) -->
+<!-- ``` -->
+
+
+
+<!-- ```{r} -->
+<!-- reg4 <- lm(Score ~ GDP+Social+Generosity, data = X2019) -->
+<!-- summary(reg4) -->
+<!-- ``` -->
+
+<!-- ```{r} -->
+<!-- sd(X2019$Score) -->
+<!-- sd(X2019$GDP) -->
+<!-- sd(X2019$Social) -->
+<!-- sd(X2019$Generosity) -->
+<!-- ``` -->

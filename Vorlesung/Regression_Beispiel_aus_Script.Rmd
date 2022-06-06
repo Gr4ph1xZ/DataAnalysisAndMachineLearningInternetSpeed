@@ -1,0 +1,155 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+---
+# Vorbereitungen
+
+Installieren der verwendeten Pakete und Bereinigung der aktuellen Arbeitsumgebung: 
+```{r, message=FALSE}
+if(!require("tidyverse")) {install.packages("tidyverse"); library("tidyverse")}
+if(!require("DescTools")) {install.packages("DescTools"); library("DescTools")}
+if(!require("sjlabelled")) {install.packages("sjlabelled"); library("sjlabelled")}
+if(!require("Hmisc")) {install.packages("Hmisc"); library("Hmisc")}
+if(!require("stats")) {install.packages("stats"); library("stats")}
+if(!require("MASS")) {install.packages("MASS"); library("MASS")}
+if(!require("psych")) {install.packages("psych"); library("psych")}
+if(!require("car")) {install.packages("car"); library("car")}
+if(!require("plotly")) {install.packages("plotly"); library("plotly")}
+
+
+rm(list = ls())
+```
+
+Erstellen der Testdaten:
+```{r}
+# Generate data
+mydata <- data.frame(ID = c(1:12),
+  Periode = c(1,2,3,4,5,6,7,8,9,10,11,12),
+  Absatz = c(2596,2709,2552,3004,3076,2513,2626,3120,2751,2965,2818,3171),
+  Werbung = c(203,216,207,250,240,226,246,250,235,256,242,251),
+  Preis = c(1.42,1.41,1.95,1.99,1.63,1.82,1.69,1.65,1.99,1.53,1.69,1.72),
+  Verkauf = c(150,120,146,270,200,93,70,230,166,116,100,216))
+                      
+
+# Display generated data for verification
+print(mydata)
+```
+
+
+```{r}
+round(cor(mydata),3)
+```
+
+
+```{r}
+plot(mydata$Werbung, 
+     mydata$Absatz, 
+     xlab = "Werbung", 
+     ylab = "Absatz", 
+     cex.main = 1,
+     cex.lab = 1, 
+     cex.axis = 1)
+```
+
+```{r}
+summary(mydata)
+```
+```{r}
+sd(mydata$Absatz)
+sd(mydata$Werbung)
+sd(mydata$Preis)
+```
+
+```{r}
+reg <- lm(Absatz ~ Werbung, data = mydata)
+summary(reg)
+```
+```{r}
+plot(mydata$Werbung, 
+     mydata$Absatz, 
+     xlab = "Werbung", 
+     ylab = "Absatz", 
+     main = "Absatz nach Werbung",
+     cex.main = 1,
+     cex.lab = 1, 
+     cex.axis = 1) + abline(reg); 
+```
+aöskdföasjfölasjfla
+
+```{r}
+plot(mydata$Werbung, 
+     mydata$Absatz, 
+     xlab = "Werbung", 
+     ylab = "Absatz", 
+     main = "Absatz nach Werbung",
+     cex.main = 1,
+     cex.lab = 1, 
+     cex.axis = 1,
+     ylim = c(0,3500),
+     xlim = c(0,250)) + abline(reg); 
+```
+```{r}
+reg2 <- lm(Absatz ~ Werbung + Preis, data = mydata)
+summary(reg2)
+```
+
+```{r}
+werbung <- mydata$Werbung
+preis <- mydata$Preis
+
+grid <- expand.grid(werbung, preis)
+d <- setNames(data.frame(grid), c("Werbung", "Preis"))
+vals <- predict(reg2, newdata = d)
+
+shopping <- matrix(vals, nrow = length(d$Werbung), ncol = length(d$Preis))
+plane <- shopping
+
+rm(d, grid, vals)
+
+library(plotly)
+p <- plot_ly(data = mydata, z = ~Absatz, 
+x = ~Preis, y = ~Werbung, opacity = 0.6) %>% add_markers()
+
+p %>% add_surface(z = ~plane, x = ~Preis, y = ~Werbung, showscale = FALSE) %>% layout(showlegend = FALSE)
+```
+
+```{r}
+reg3 <- lm(Absatz ~ Werbung + Preis + Verkauf, data = mydata)
+summary(reg3)
+```
+
+
+```{r}
+head(X2019)
+```
+
+
+
+```{r}
+summary(X2019)
+```
+
+
+```{r}
+names(X2019) <- c("Rank", "Region", "Score", "GDP", "Social", "Health", "Freedom", "Generosity", "Corruption")
+```
+
+```{r}
+cor(X2019[,3:9])
+```
+
+
+
+```{r}
+reg4 <- lm(Score ~ GDP+Social+Generosity, data = X2019)
+summary(reg4)
+```
+
+```{r}
+sd(X2019$Score)
+sd(X2019$GDP)
+sd(X2019$Social)
+sd(X2019$Generosity)
+```
