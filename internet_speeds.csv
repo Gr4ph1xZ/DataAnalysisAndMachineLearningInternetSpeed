@@ -3,9 +3,9 @@ Monaco;1.0;192.68;;;January 2022
 Singapore;2.0;192.01;19.0;64.92;January 2022
 Chile;3.0;189.36;109.0;15.5;January 2022
 Thailand;4.0;184.03;56.0;32.38;January 2022
-Hong Kong (SAR);5.0;173.42;38.0;45.86;January 2022
+Hong Kong;5.0;173.42;38.0;45.86;January 2022
 Denmark;6.0;163.6;8.0;87.11;January 2022
-Macau (SAR);7.0;156.73;35.0;47.56;January 2022
+Macao;7.0;156.73;35.0;47.56;January 2022
 China;8.0;155.79;9.0;85.83;January 2022
 United States;9.0;143.76;21.0;62.47;January 2022
 Spain;10.0;134.19;49.0;35.59;January 2022
@@ -67,7 +67,7 @@ Jordan;65.0;50.18;98.0;16.95;January 2022
 Italy;66.0;49.8;50.0;35.11;January 2022
 Philippines;67.0;49.52;92.0;17.95;January 2022
 Serbia;68.0;48.97;43.0;41.06;January 2022
-Czechia;69.0;47.68;40.0;44.72;January 2022
+Czech Republic;69.0;47.68;40.0;44.72;January 2022
 Bahrain;70.0;47.38;39.0;44.89;January 2022
 Slovakia;71.0;47.34;59.0;31.9;January 2022
 India;72.0;47.08;116.0;13.49;January 2022
@@ -81,7 +81,7 @@ Nepal;79.0;39.73;112.0;14.96;January 2022
 Croatia;80.0;39.54;14.0;76.61;January 2022
 Mexico;81.0;38.77;80.0;22.26;January 2022
 Argentina;82.0;38.47;84.0;20.07;January 2022
-The Bahamas;83.0;37.69;;;January 2022
+Bahamas;83.0;37.69;;;January 2022
 Uzbekistan;84.0;36.85;115.0;13.85;January 2022
 Jamaica;85.0;36.45;55.0;32.88;January 2022
 Egypt;86.0;35.67;88.0;19.34;January 2022
@@ -93,7 +93,7 @@ Albania;91.0;33.5;48.0;35.62;January 2022
 Greece;92.0;33.41;25.0;55.49;January 2022
 Belize;93.0;31.81;;;January 2022
 Bangladesh;94.0;31.52;130.0;9.81;January 2022
-Cote dIvoire;95.0;31.42;131.0;9.62;January 2022
+Côte d'Ivoire;95.0;31.42;131.0;9.62;January 2022
 Guyana;96.0;31.01;;;January 2022
 South Africa;97.0;29.6;54.0;33.26;January 2022
 Cyprus;98.0;29.48;13.0;76.66;January 2022
@@ -126,9 +126,9 @@ Tajikistan;124.0;16.96;135.0;6.43;January 2022
 Togo;125.0;16.46;;;January 2022
 Cape Verde;126.0;16.37;;;January 2022
 Dominican Republic;127.0;15.52;97.0;17.21;January 2022
-Republic of the Union of Myanmar;128.0;15.2;68.0;26.29;January 2022
+Myanmar;128.0;15.2;68.0;26.29;January 2022
 Haiti;129.0;14.89;129.0;10.02;January 2022
-Palestine;130.0;14.3;137.0;5.72;January 2022
+Palestinian Territory;130.0;14.3;137.0;5.72;January 2022
 Gabon;131.0;13.41;;;January 2022
 Morocco;132.0;12.78;66.0;26.86;January 2022
 Fiji;133.0;12.27;79.0;22.75;January 2022
@@ -155,7 +155,7 @@ Kenya;153.0;8.91;107.0;15.81;January 2022
 Sierra Leone;154.0;8.57;;;January 2022
 Bhutan;155.0;8.52;;;January 2022
 Namibia;156.0;8.29;85.0;20.04;January 2022
-The Gambia;157.0;7.84;;;January 2022
+Gambia;157.0;7.84;;;January 2022
 Tunisia;158.0;7.64;82.0;21.78;January 2022
 Lebanon;159.0;7.27;94.0;17.72;January 2022
 Botswana;160.0;7.22;73.0;24.79;January 2022
@@ -172,7 +172,7 @@ Zambia;170.0;4.6;121.0;12.46;January 2022
 Niger;171.0;3.85;;;January 2022
 Guinea;172.0;3.79;;;January 2022
 Sudan;173.0;3.28;133.0;7.83;January 2022
-Syria;174.0;2.87;122.0;12.24;January 2022
+Syrian Arab Republic;174.0;2.87;122.0;12.24;January 2022
 Yemen;175.0;2.74;140.0;0.53;January 2022
 Ethiopia;176.0;2.69;78.0;22.83;January 2022
 Cuba;177.0;1.9;119.0;12.71;January 2022
