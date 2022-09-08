@@ -1,3 +1,9 @@
+# Prerequisites:
+
+#### GraphViz:
+https://graphviz.org/download/
+
+
 # Sources:
 
 #### Internet Speeds: 
